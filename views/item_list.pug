@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1(class="text-2xl")= title
+  if item_list.length
+    ul
+      each item in item_list
+        li( class=" border p-4")
+          a(href=item.url) 
+            p(class="text-green-500 text-xl") #{item.name}
+            p #{item.desc}
+            p(class="font-serif text-green-500") $ #{item.price}
+
+  else
+    p There are no item.

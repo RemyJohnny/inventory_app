@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+    div(class=" flex justify-between my-6")   
+        h1(class="text-3xl font-bold tracking-tight text-gray-900 first-letter:uppercase") #{category.name}
+        div(class=" flex gap-6")   
+            a.btn(href=category.url+"/update") update
+            a.btn(href=category.url+"/delete") delete
+    p #{category.desc}
+    div(class="pt-8") 
+        h1(class="text-xl font-bold tracking-tight text-gray-900") Items in this category
+        if item_list.length
+            ul
+                each item in item_list
+                    li( class=" border p-4")
+                        a(href=item.url) 
+                            p(class="text-blue-600 text-xl") #{item.name}
+                        p #{item.desc}
+                        p(class="font-serif") $ #{item.price}
+
+        else
+            p There are no items in this category.
+            
+    
+        
+        

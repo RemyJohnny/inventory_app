@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    h1(class=' text-3xl text-blue-800 text-center pb-4 ') #{title}
+    form(method="post" class= (errors ? "border-red-500" : '') + " border flex flex-col  gap-4 py-8 px-4") 
+        .form_group
+            label(for="name" class=" block") name 
+            input#name.input(type="text", name='name' required  value=(item === undefined ? "" : item.name) placeholder="name") 
+        .form_group 
+            label(for="category" class="block") category
+            select#category.input(name="category" required) 
+                option(value="") --select a category--
+                for category in categories 
+                    if item 
+                        if category._id.toString() === item.category._id.toString()
+                            option(value=category._id selected) #{category.name} 
+                        else 
+                            option(value=category._id) #{category.name} 
+                    else 
+                        option(value=category._id) #{category.name} 
+        .form_group
+            label(for="country" class=" block") Country 
+            select#country.input(name="country" required) 
+                option(value="") ~ select a country ~
+                for country in countries 
+                    if item 
+                        if country === item.country 
+                            option(value=country selected) #{country} 
+                        else 
+                            option(value=country) #{country} 
+                    else 
+                        option(value=country) #{country} 
+            //input#country.input(type="country", name='country' required  value=(item === undefined ? "" : item.country) placeholder="country of origin") 
+        .form_group
+            label(for="price" class=" block") Price 
+            input#price.input(type="text", name='price' required  value=(item === undefined ? "" : item.price) placeholder="price") 
+        .form_group
+            label(for="num_in_stock" class=" block") quantity in stock 
+            input#num_in_stock.input(type="number", name='num_in_stock' required  value=(item === undefined ? "" : item.num_in_stock) placeholder="number in stock") 
+        .form_group
+            label(for="alc_vol" class=" block") alc % 
+            input#alc_vol.input(type="number", name='alc_vol' required  value=(item === undefined ? "" : item.alc_vol) placeholder="alcohol percent") 
+        .form_group
+            label(for="desc" class=" block") description 
+            textarea#desc.input(cols="30", rows="3" name='desc' required  value=(item === undefined ? "" : item.desc) placeholder="describe the item") #{item === undefined ? "" : item.desc}
+        .form_group
+            label(for="fact" class=" block") Did you know (optional)
+            textarea#fact.input(cols="30", rows="3" name='fact'  value=(item === undefined ? "" : item.fact) placeholder="Did you know") #{item === undefined ? "" : item.fact}
+        div(class="flex justify-center gap-6")
+            button.btn(type='submit') #{title}
+    if errors 
+        ul 
+            each error in errors 
+                li!= error.msg

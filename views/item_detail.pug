@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    //h1(class="text-2xl")= title
+    div(class="p-4 bg-white shadow")
+        div( class="font-sans")
+            p(class="text-xl font-bold tracking-tight text-gray-900 sm:text-3xl") #{item.name}
+            p #{item.desc}
+            div(class="my-4 border p-4")           
+                p origin: #[em #{item.country}]
+                p alc #{item.alc_vol}%
+                p(class="text-sm text-gray-500") Quantity In Stock #{item.num_in_stock}
+                p(class=" tracking-tight text-xl") $ #{item.price}
+            p(class="text-sm") category:
+            a(href=item.category.url class=" font-light text-blue-600") #{item.category.name}
+        div(class=" flex justify-between mt-4")
+            a.btn(href=item.url+"/update") update
+            a.btn(href=item.url+"/delete") delete

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1(class=' text-3xl text-blue-800 text-center pb-4 ') #{title}
+    form(method="POST" class=" border flex flex-col  gap-4 py-8 px-4") 
+        .form_group
+            label(for="name" class=" block") name 
+            input#name.input(type="text", name='name' required  value=(category === undefined ? "" : category.name) placeholder="name") 
+        .form_group
+            label(for="desc" class=" block") description 
+            textarea#desc.input(cols="30", rows="3" name='desc' required  value=(category === undefined ? "" : category.desc) placeholder="describe the category") #{category === undefined ? "" : category.desc} 
+        div(class="flex justify-center gap-6")
+            button.btn(type='submit') #{title}
+    if errors 
+        ul 
+            each error in errors 
+                li(class="text-red-600") !  !{error.msg}

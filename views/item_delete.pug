@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    div(class="flex justify-center items-center flex-col gap-6")
+        div
+            h1(class="text-3xl") #{title}:  #{item.name}
+            p #{item.desc}
+        p do you really want to Delete this item ?
+        form(method="POST") 
+            .form_group
+                input(type="hidden", name="itemId" value=item._id)
+            button.btn(type="submit") Delete  

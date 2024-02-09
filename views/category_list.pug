@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1(class="text-2xl")= title
+  if category_list.length
+    ul
+      each category in category_list
+        li( class=" border p-4")
+          a(href=category.url) 
+            p(class="text-green-500 text-xl") #{category.name}
+
+  else
+    p There are no categories.

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  background: rgb(9, 9, 168);
+  color: white;
+  padding: 0 0.8rem;
+  border-radius: 0.2rem;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid rgb(9, 9, 168);
+}
+.btn:hover {
+  background: white;
+  color: rgb(9, 9, 168);
+  border: 1px solid rgb(9, 9, 168);
+}
+.input {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.03);
+}
+.input:focus {
+  box-shadow: 3px 4px 4px rgba(13, 2, 53, 0.315);
+  outline: none;
+}
